@@ -1,0 +1,185 @@
+*{
+  box-sizing: border-box;
+  /* font-family: 'Poppins', sans-serif; */
+  /* font-family: ui-sans-serif,system-ui; */
+  font-family: Arial, Helvetica, sans-serif;
+  /* background-color: #05080f;
+  color: #c8cad0; */
+  background-color: #05080F;
+color: #FFFFFF;
+transition: background-color 0.3s, color 0.3s;
+}
+body{
+  background-color: #05080f;
+  color: whitesmoke;
+}
+.input-time div{
+  display: inline-block;
+  padding: 0px 10px;
+}
+.con-list span{
+  display: block;
+}
+
+.app-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  margin: 10px auto auto auto;
+  /* text-align: center; */
+  /* width: 50%; */
+  /* background-color: beige; */
+  
+
+}
+.btn-primary{
+  background-color:#0f4881;
+  color: #e3e4e9;
+
+}
+.container{
+  text-align: center;
+  align-items: center;
+  width: 500px;
+  margin: 0 auto;
+}
+.alarmList {
+  text-align: center;
+  align-items: center;
+  width: 30%;
+  margin: 0 auto;
+  
+}
+.input-time{
+  /* border: 2px solid whitesmoke; */
+}
+#clock{
+  font-size: 5rem;
+}
+.input-time input[type="number"],select{
+  /* padding: 5px;
+  margin: 5px; */
+  /* border: 0px; */
+  /* border: none; */
+  width: 2.8em;
+  /* font-size: 1.3em; */
+  /* border: 1px solid #000000; */
+  border: 1px solid #343a4b;
+  padding: 2px;
+  /* background-color: #001F3F; */
+  border-radius: 0.2em;
+
+}
+#time-period{
+
+
+  width: 3.5em;
+  border: 1px solid #343a4b;
+  padding: 4px;
+  border-radius: 0.2em;
+  padding-right: 2px;
+  
+  
+}
+#time-period:hover,.input-time input[type="number"]:hover{
+  border-color: #0d6efd;
+}
+
+.input-time button{
+  display: block;
+  margin: auto;
+  width: 20%;
+  margin-top: 10px;
+  /* background-color: #00CED1; */
+  background-color:#001F3F;
+  color: #e3e4e9;
+}
+.input-time button:hover{
+  background-color:#0f4881;
+  color: #e3e4e9;
+}
+
+.delete {
+    height: 28px;
+    padding: 5px 0px;
+    border-radius: 3px;
+}
+
+.delete:hover {
+  /* background: #f2f2f2; */
+  cursor: pointer;
+}
+#list{
+  margin-top: 10px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  margin: auto;
+  /* border: 1px solid #e5e5e5; */
+}
+ul li {
+  padding: 10px;
+  /* padding-left: 0; */
+  display: flex;
+  justify-content: space-between;
+  /* align-items: inherit; */
+  /* align-items: center; */
+  font-size: 1.1rem;
+
+}
+ul li:hover {
+  /* background: #f3f3f3; */
+  /* background-color: #CCCCCC; */
+/* color: #05080F; */
+}
+/* #list ul:hover{
+  background-color: #CCCCCC;
+  color: #05080F;
+} */
+.alarmList{
+  display: none;
+  /* width:30%; */
+ 
+}
+.alarmList.show {
+  display: block;
+}
+#list-header{
+  /* margin-top: 20px; */
+  font-size: 1.2rem;
+  margin: 30px 225px 0px 0px;
+  
+}
+.row-data{
+  width: inherit;
+}
+@media (max-width: 768px) {
+  #clock {
+    font-size: 3rem;
+  }
+
+  
+  .input-time input[type="number"],
+  select {
+    width: 2em;
+    font-size: 1em;
+  }
+
+  .input-time button {
+    width: 40%;
+    margin-top: 20px;
+  }
+
+  .alarmList {
+    width: 70%;
+  }
+
+  #list-header {
+    margin: 30px 130px 0px 0px;
+  }
+}

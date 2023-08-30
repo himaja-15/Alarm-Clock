@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <div class="app-container">
+        <!-- div container for displaying the day month and year -->
+        <div id="day">
+        </div>
+        <!-- Container for displaying the live clock -->
+        <div id="clock" class="header-clock">
+        </div>
+        <!-- main container to inputting alarm time and displaying -->
+        <div class="container">
+             <!-- Container for inputting alarm time -->
+            <div class="input-time">
+                <!-- hours input -->
+                <div class="con-list">
+                    <span>Hours</span>
+                    <input type="number" id="hours" placeholder="00" min="1" max="12">
+                </div>
+                <!-- minutes input -->
+                <div class="con-list">
+                    <span>Minutes</span>
+                    <input type="number" id="min" placeholder="00" min="0" max="59">
+                </div>
+                <!-- seconds input -->
+                <div class="con-list">
+                    <span>Seconds</span>
+                    <input type="number" id="sec" placeholder="00" min="0" max="59">
+                </div>
+                <!-- dropdown list for selecting am/pm -->
+                <select id="time-period">
+                    <option value="am">AM</option>
+                    <option value="pm">PM</option>
+                </select>
+                <!-- set alarm button to set the alarm -->
+                <div  class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-primary" type="button" id="set-alarm">Set Alarm</button>
+                </div>
+               
+            </div>
+            <!-- div container for displaying list of alarms -->
+            <div class="alarmList">
+                <!-- header of the alarm list -->
+                <div id="list-header">
+                    <caption >Alarm List</caption>
+                </div>
+                <!-- unordered list for alarm data -->
+                <ul id="list" class="list-group list-group-flush">
+                    
+                </ul>
+            </div>
+           
+           
+        </div>
+    </div>
+    <!-- script tag -->
+    <script src="script.js"></script>
+    <!-- <script src="alarm.js"></script> -->
+
+</body>
+</html>
