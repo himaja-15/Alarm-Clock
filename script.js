@@ -1,4 +1,4 @@
-// updating live time and date
+// updating live time and date and day
 function updateTime(){
     const date=new Date();
     const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][date.getDay()];
