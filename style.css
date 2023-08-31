@@ -1,10 +1,6 @@
 *{
   box-sizing: border-box;
-  /* font-family: 'Poppins', sans-serif; */
-  /* font-family: ui-sans-serif,system-ui; */
   font-family: Arial, Helvetica, sans-serif;
-  /* background-color: #05080f;
-  color: #c8cad0; */
   background-color: #05080F;
   color: #FFFFFF;
   transition: background-color 0.3s, color 0.3s;

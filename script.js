@@ -1,18 +1,18 @@
 // updating live time and date and day
-function updateTime(){
-    const date=new Date();
+function updateTime() {
+    const date = new Date();
     const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][date.getDay()];
     const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][date.getMonth()];
     const day = date.getDate();
     const year = date.getFullYear();
-    const hours=date.getHours();
-    const min=date.getMinutes();
-    const sec=date.getSeconds();
-    const currentDay=document.getElementById('day');
-    const clock=document.getElementById('clock');
+    const hours = date.getHours();
+    const min = date.getMinutes();
+    const sec = date.getSeconds();
+    const currentDay = document.getElementById('day');
+    const clock = document.getElementById('clock');
     const timePeriod = hours >= 12 ? 'PM' : 'AM';
-    currentDay.textContent= `${dayOfWeek}, ${month} ${day}, ${year}`
-    clock.textContent=`${hours}:${min}:${sec} ${timePeriod}`;
+    currentDay.textContent = `${dayOfWeek}, ${month} ${day}, ${year}`;
+    clock.textContent = `${hours}:${min}:${sec} ${timePeriod}`;
 }
 
 const setAlarmButton=document.getElementById('set-alarm');
@@ -39,8 +39,19 @@ function handleButtonClickPress(event){
     alarmTime.setMinutes(min);
     alarmTime.setSeconds(sec);
     addAlarm(alarmTime);
+    clearInputValues();
     
 }
+
+// Clear input values and initialize the input boxes
+function clearInputValues() {
+    document.getElementById('hours').value = '';
+    document.getElementById('min').value = '';
+    document.getElementById('sec').value = '';
+    document.getElementById('time-period').value = 'am';
+}
+
+
 
 // array to store alarm objects
 let alarmList=[];
@@ -53,13 +64,12 @@ function addAlarm(alarmTime){
         const newAlarm = {
             id:Date.now().toString(),
             alarmTime: alarmTime,
+            timeoutId:null
           };
         alarmList.push(newAlarm);
-        console.log("h",newAlarm);
-        console.log("h1",newAlarm.alarmTime);
         renderList();
         showNotifications('Alarm added succesfully to the list');
-        ringAlarm(newAlarm.alarmTime,newAlarm.id);
+        ringAlarm(newAlarm);
         // console.log("h",newAlarm);
         // console.log("h1",newAlarm.alarmTime);
         // console.log("hey",alarmTime);
@@ -72,19 +82,19 @@ function addAlarm(alarmTime){
 }
 
 // alert when the alarm time is up
-function ringAlarm(alarmTime,alarmId){
+function ringAlarm(alarmItem){
     const currentTime=new Date();
-    const timeforAlarm=alarmTime-currentTime;
+    const timeforAlarm=alarmItem.alarmTime-currentTime;
     if(timeforAlarm>0){
+       alarmItem.timeoutId= setTimeout(function (){
+        const hours=alarmItem.alarmTime.getHours();
+        const min=alarmItem.alarmTime.getMinutes();
+        const sec=alarmItem.alarmTime.getSeconds();
+        alert(`Time Up It's ${hours}:${min}:${sec}sec`);
+        deleteAlarm(alarmItem.id);
+        
+    },timeforAlarm);
        
-        setTimeout(function (){
-            const hours=alarmTime.getHours();
-            const min=alarmTime.getMinutes();
-            const sec=alarmTime.getSeconds();
-            alert(`Time Up It's ${hours}:${min}:${sec}sec`);
-            deleteAlarm(alarmId);
-            
-        },timeforAlarm);
     }
 }
 
@@ -145,6 +155,10 @@ function handleDeleteClickPress(event){
 
 // deleting the alarm from the list
 function deleteAlarm(AlarmListId){
+    const alarmItem = alarmList.find(item => item.id === AlarmListId);
+    if (alarmItem && alarmItem.timeoutId) {
+        clearTimeout(alarmItem.timeoutId);
+    }
     alarmList=alarmList.filter(function(alarmItem){
        return alarmItem.id !== AlarmListId;
     });
@@ -158,20 +172,13 @@ function showNotifications(text){
 }
 
 const clearInputsButton = document.getElementById('set-alarm');
-clearInputsButton.addEventListener('click', clearInputValues);
+// clearInputsButton.addEventListener('click', clearInputValues);
 clearInputsButton.addEventListener('click', function(){
     clearInputValues();
     document.querySelector(".alarmList").classList.add("show");
     
 });
 
-// Clear input values and initialize the input boxes
-function clearInputValues() {
-    document.getElementById('hours').value = '';
-    document.getElementById('min').value = '';
-    document.getElementById('sec').value = '';
-    document.getElementById('time-period').value = 'am';
-}
 
 // Initialize the app and start updating time
 function initializeApp(){
